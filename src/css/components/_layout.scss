@@ -12,7 +12,8 @@
   padding: 0;
   // Start with 10px for base font size so other dimensions can be em based and
   // easily calculable.
-  font-size: 10px;
+  //Changed the base font size from 10px to 15px to avoid the player from looking too small	---	a.video.player
+  font-size: 15px;
   line-height: 1;
 
   // Provide some basic defaults for fonts
