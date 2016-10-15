@@ -7,7 +7,8 @@
   right: 0;
   height: 3.0em;
 
-  @include background-color-with-alpha($primary-background-color, $primary-background-transparency);
+  //Make Background of control bar transparent	---	a.video.player
+  //@include background-color-with-alpha($primary-background-color, $primary-background-transparency);
 }
 
 // Video has started playing
