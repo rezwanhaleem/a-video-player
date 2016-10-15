@@ -16,6 +16,16 @@
   @include flex(auto);
   @include display-flex(center);
   min-width: 4em;
+
+  //Raising and aligning the progress box	---  a.video.player
+  position: absolute;
+  top: -1em;
+  height: 1em;
+  width: auto;
+  left: 0;
+  right: 0;
+  padding-right: 1em;
+  padding-left: 1em;
 }
 
 .vjs-live .vjs-progress-control {
