@@ -59,6 +59,15 @@ class MouseTimeDisplay extends Component {
     let newTime = this.calculateDistance(event) * duration;
     let position = event.pageX - Dom.findElPosition(this.el().parentNode).left;
 
+    //Stop the mouse time display from going outside the boundaries of the progress holder  ---  a.video.player
+    let parentWidth = parseFloat(window.getComputedStyle(this.el().parentNode).width);
+    if(position < 0){
+    	position = 0;
+    }
+    else if(position > parentWidth){
+    	position = parentWidth;
+    }
+
     this.update(newTime, position);
   }
 
