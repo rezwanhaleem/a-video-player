@@ -186,6 +186,8 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'build/temp/', src: ['*'], dest: 'dist/'+version.full+'/', filter: 'isFile'} // includes files in path
         ]
       },
+      //Copies the resource folder and makes resources such as images and icons available to the players html elements  ---  a.video.player
+      resources: { cwd: 'resources/', src: ['**/**'], dest: 'build/temp/resources/', expand: true, filter: 'isFile' },
       fonts: { cwd: 'node_modules/videojs-font/fonts/', src: ['*'], dest: 'build/temp/font/', expand: true, filter: 'isFile' },
       swf:   { cwd: 'node_modules/videojs-swf/dist/', src: 'video-js.swf', dest: 'build/temp/', expand: true, filter: 'isFile' },
       ie8:   { cwd: 'node_modules/videojs-ie8/dist/', src: ['**/**'], dest: 'build/temp/ie8/', expand: true, filter: 'isFile' },
@@ -468,6 +470,8 @@ module.exports = function(grunt) {
     'version:css',
     'cssmin',
 
+    //Copy call for resource folder to be copied to 'dist'  ---  a.video.player
+    'copy:resources',
     'copy:fonts',
     'copy:swf',
     'copy:ie8',

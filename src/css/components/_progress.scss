@@ -19,11 +19,12 @@
 
   //Raising and aligning the progress box	---  a.video.player
   position: absolute;
-  top: -1em;
-  height: 1em;
+  height: 0.3em;
   width: auto;
   left: 1em;
   right: 1em;
+  padding-top: 5em;
+  top: -4.7em;
 }
 
 .vjs-live .vjs-progress-control {
@@ -35,10 +36,20 @@
   @include flex(auto);
   @include transition(all 0.2s);
   height: 0.3em;
+  //Aligning the seekbar and creating a faint dark glow behind it for increased contrast and visibility	---  a.video.player
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+  top: -0.15em;
+}
+
+//Prevent slow unnecessary transitions while pulling  ---  a.video.player
+.video-js .vjs-pulling {
+  @include transition(all 0s);
 }
 
 // We need an increased hit area on hover
-.video-js .vjs-progress-control:hover .vjs-progress-holder {
+.video-js .vjs-progress-control:hover .vjs-progress-holder,
+//Make sure the font size increases properly while pulling 	---  a.video.player
+.video-js .vjs-pulling {
   font-size: 1.666666666666666666em
 }
 
@@ -49,7 +60,10 @@
 // Also show the current time tooltip
 .video-js .vjs-progress-control:hover .vjs-time-tooltip,
 .video-js .vjs-progress-control:hover .vjs-mouse-display:after,
-.video-js .vjs-progress-control:hover .vjs-play-progress:after {
+.video-js .vjs-progress-control:hover .vjs-play-progress:after,
+//Ensure that the mouse display and tooltip still show, even when the pointer leaves the progress holder area, while pulling	---  a.video.player
+.video-js  .vjs-pulling .vjs-mouse-display:after,
+.video-js  .vjs-pulling .vjs-play-progress:after {
   font-family: $text-font-family;
   visibility: visible;
   font-size: 0.6em;
@@ -72,6 +86,23 @@
   top: 0;
 }
 
+//"TESTING REQUIRED" smooth height transition only seems to work in firefox while messing up everything in other browsers  ---  a.video.player
+@-moz-document url-prefix() {
+  .video-js .vjs-progress-holder .vjs-play-progress,
+  .video-js .vjs-progress-holder .vjs-load-progress,
+  .video-js .vjs-progress-holder .vjs-tooltip-progress-bar,
+  .video-js .vjs-progress-holder .vjs-load-progress div {
+    @include transition(height 0.2s);
+  }
+
+  .video-js .vjs-pulling .vjs-play-progress,
+  .video-js .vjs-pulling .vjs-load-progress,
+  .video-js .vjs-pulling .vjs-tooltip-progress-bar,
+  .video-js .vjs-pulling .vjs-load-progress div {
+    @include transition(height 0s);
+  }
+}
+
 .video-js .vjs-mouse-display {
   @extend .vjs-icon-circle;
 
@@ -89,14 +120,33 @@
     top: -0.333333333333333em;
     right: -0.5em;
     font-size: 0.9em;
+    //Create a faint dark glow to create contrast between the progress handle and the progress bar  ---  a.video.player
+    text-shadow: 0em 0em 1em rgba(0, 0, 0, 1);
   }
+}
+
+//Show a ruler image in the background to indicate that the user is pullseeking (zoomed scrubbing  ---  a.video.player
+.video-js .vjs-pullseeking,
+.video-js .vjs-pullseeking .vjs-play-progress {
+  background-image: url('resources/images/ruler.svg');
+  background-repeat: repeat-x;
+  transition-property: background-position;
+  transition-duration: calc(1000ms / 60);
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+//Hide progress handle while pullseeking for mouse display to be accurately seen  ---  a.video.player
+.video-js .vjs-pullseeking .vjs-play-progress:before {
+  visibility: hidden;
 }
 
 // Current Time "tooltip"
 // By default this is hidden and only shown when hovering over the progress control
 .video-js .vjs-time-tooltip,
-.video-js .vjs-mouse-display:after,
-.video-js .vjs-play-progress:after {
+.video-js .vjs-mouse-display:after{
+//Commented out the tooltip over play progress so that it doesnt overlap with the pointer tooltip and make it illegible  ---  a.video.player
+//.video-js .vjs-play-progress:after {
   visibility: hidden;
   pointer-events: none;
   position: absolute;
@@ -108,6 +158,13 @@
   padding: 6px 8px 8px 8px;
   @include background-color-with-alpha(#fff, 0.8);
   @include border-radius(0.3em);
+}
+
+//Since pullseeking causes increase accuracy in the time tooltip the position has to be recentered  ---  a.video.player
+.video-js .vjs-pullseeking .vjs-time-tooltip,
+.video-js .vjs-pullseeking .vjs-mouse-display:after{
+//.video-js .vjs-pullseeking .vjs-play-progress:after {
+	right: -2.5em;
 }
 
 .video-js .vjs-time-tooltip,
@@ -163,7 +220,9 @@
 .vjs-no-flex .vjs-progress-control .vjs-mouse-display {
   z-index: 0;
 }
-.video-js .vjs-progress-control:hover .vjs-mouse-display {
+.video-js .vjs-progress-control:hover .vjs-mouse-display,
+//Make sure the tooltip stays visible even whe nthe pointer leaves the progress bar hit area  ---  a.video.player
+.video-js .vjs-pulling .vjs-mouse-display {
   display: block;
 }
 .video-js.vjs-user-inactive .vjs-progress-control .vjs-mouse-display,

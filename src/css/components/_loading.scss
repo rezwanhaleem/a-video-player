@@ -23,6 +23,10 @@
 .vjs-waiting .vjs-loading-spinner {
   display: block;
 }
+//Prevent the load spinner from unnecessarily showing while scrubbing  --- a.video.player
+.vjs-pull .vjs-loading-spinner {
+  display: none;
+}
 
 .vjs-loading-spinner:before,
 .vjs-loading-spinner:after {
