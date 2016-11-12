@@ -119,13 +119,13 @@ class SeekBar extends Slider {
    * @method handleMouseMove
    */
   handleMouseMove(event) {
-
     //Get pointer position relative to the progress holder hit area (bottom left precisely)	---  a.video.player
     let pointerpos = Dom.getPointerPosition(this.el_.parentNode, event);
     let pullup = pointerpos.y;
     let pull = pointerpos.x;
     let temp = pullup * 3;
     this.el_.setAttribute('temp', temp);
+
     //Start pullseeking ONLY when the progress handle is drag farther than the threshold of 1.5em above the bottom of the progress holder  ---  a.video.player
     if(temp >= 1.5){
       this.el_.style.height = temp + 'em';
@@ -210,10 +210,22 @@ class SeekBar extends Slider {
       if(this.el_.getAttribute('zoom') === 'true')
         this.el_.setAttribute('zoom', 'false');
     }
+
     //Since RAFs call updateToolTip method by themselves in their own fashion, no need for redundant calls  ---  a.video.player
     if( !this.hasClass('vjs-backpulling') && !this.hasClass('vjs-forwardpulling'))
       this.updateToolTip(event);
+
     this.playProgressBar.el_.style.width = (pull * parseFloat(window.getComputedStyle(this.el_).width)) + 'px';
+
+    if(!this.hasClass('vjs-pullseeking')){
+    	let duration = this.player_.duration();
+		let newTime = this.calculateDistance(event) * duration;
+		// Don't let video end while scrubbing.
+	    if (newTime === this.player_.duration()) { newTime = newTime - 0.1; }
+
+	    // Set new time (tell player to seek to new time)
+	    this.player_.currentTime(newTime);
+	}
   }
 
   //RAF method used to animate motion back from the zoomed pullseeking area ---  a.video.player
@@ -342,34 +354,39 @@ class SeekBar extends Slider {
     }
   }
 
+  //Handles time updates upon mouse release while pullseeking  ---  a.video.player
+  updateTime(event){
+    //Instead of updating the time every time the progress handle is move it is updated only when its let go and the user as decided a time  ---  a.video.player
+    let duration = this.player_.duration();
+    let newTime = this.calculateDistance(event) * duration;
+
+    newTime = this.player_.currentTime() + ((newTime - this.player_.currentTime() )/ 10);
+
+    newTime += parseFloat(this.el_.getAttribute('timeOffset')) * duration;
+
+    //Ensure that when maxpulled for maxforwarded then the time doesnt show negligible misalignment  ---  a.video.player
+    if(this.hasClass('vjs-maxbackpull')){
+	  newTime = 0;
+    }
+    else if(this.hasClass('vjs-maxforwardpull')){
+	  newTime = duration;
+    }
+    // Don't let video end while scrubbing.
+    if (newTime === this.player_.duration()) { newTime = newTime - 0.1; }
+
+    // Set new time (tell player to seek to new time)
+    this.player_.currentTime(newTime);
+  }
+
   /**
    * Handle mouse up on seek bar
    *
    * @method handleMouseUp
    */
   handleMouseUp(event) {
-    //Instead of updating the time every time the progress handle is move it is updated only when its let go and the user as decided a time  ---  a.video.player
-	let duration = this.player_.duration();
-	let newTime = this.calculateDistance(event) * duration;
-
 	if(this.hasClass('vjs-pullseeking')){
-	  newTime = this.player_.currentTime() + ((newTime - this.player_.currentTime() )/ 10);
-
-	  newTime += parseFloat(this.el_.getAttribute('timeOffset')) * duration;
-
-	  //Ensure that when maxpulled for maxforwarded then the time doesnt show negligible misalignment  ---  a.video.player
-	  if(this.hasClass('vjs-maxbackpull')){
-		newTime = 0;
-	  }
-	  else if(this.hasClass('vjs-maxforwardpull')){
-		newTime = duration;
-	  }
+		this.updateTime(event);
 	}
-    // Don't let video end while scrubbing.
-    if (newTime === this.player_.duration()) { newTime = newTime - 0.1; }
-
-    // Set new time (tell player to seek to new time)
-    this.player_.currentTime(newTime);
 
     super.handleMouseUp(event);
 
