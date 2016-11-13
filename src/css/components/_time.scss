@@ -2,30 +2,46 @@
   @include flex(none);
   font-size: 1em;
   line-height: 3em;
-  min-width: 2em;
+  //Commented out width and padding properties to remove excess spaces between time displays  ---  a.video.player
+  /*min-width: 2em;
   width: auto;
   padding-left: 1em;
-  padding-right: 1em;
+  padding-right: 1em;*/
 }
 
 .vjs-live .vjs-time-control {
   display: none;
 }
 
+//Commented out the invisibility of the remaining time displays  ---  a.video.player
 // We need the extra specificity that referencing .vjs-no-flex provides.
 .video-js .vjs-current-time,
 .vjs-no-flex .vjs-current-time {
-  display: none;
+  //display: none;
 }
 
 .video-js .vjs-duration,
 .vjs-no-flex .vjs-duration {
-  display: none;
+  //display: none;
 }
 
 .vjs-time-divider {
-  display: none;
+  //display: none;
   line-height: 3em;
+}
+
+//Initially hiding remaining time display  ---  a.video.player
+.video-js .vjs-remaining-time {
+  @include transition(all 0.2s);
+  width: 0;
+  opacity: 0;
+}
+
+//Show remaining time display upon hover on itself or any of the time display elements  ---  a.video.player
+.video-js .vjs-time-control:hover ~ .vjs-remaining-time,
+.video-js .vjs-remaining-time:hover {
+  width: 4em;
+  opacity: 1;
 }
 
 .vjs-live .vjs-time-divider {

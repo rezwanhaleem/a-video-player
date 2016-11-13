@@ -49,14 +49,15 @@ class ControlBar extends Component {
 
 ControlBar.prototype.options_ = {
   children: [
-    'playToggle',
-    'volumeMenuButton',
-    'currentTimeDisplay',
-    'timeDivider',
-    'durationDisplay',
-    'progressControl',
-    'liveDisplay',
-    'remainingTimeDisplay',
+	//Rearranged the order of child elements to suit the needs for a new design  ---  a.video.player
+	'progressControl',
+	'currentTimeDisplay',
+	'timeDivider',
+	'durationDisplay',
+	'remainingTimeDisplay',
+	'liveDisplay',
+	'volumeMenuButton',
+	'playToggle',
     'customControlSpacer',
     'playbackRateMenuButton',
     'chaptersButton',
