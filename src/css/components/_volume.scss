@@ -3,6 +3,9 @@
   cursor: pointer;
   @include flex(none);
   @extend .vjs-icon-volume-high;
+
+  //To allow the volume display to be seen properly --- a.video.player
+  overflow: visible;
 }
 
 .video-js .vjs-mute-control.vjs-vol-0,
@@ -26,6 +29,23 @@
 
 .video-js .vjs-volume-bar {
   margin: 1.35em 0.45em;
+
+  //Volume display  ---  a.video.player
+  &:after {
+	position: relative;
+    top: -1.25em;
+    left: 4.75em;
+    font-size: 1em;
+    line-height: 3em;
+    width: auto;
+    content: attr(aria-volume);
+  }
+}
+
+// Also show the current volume tooltip --- a video
+.video-js .vjs-volume-menu-button:hover .vjs-volume-bar:after,
+.video-js .vjs-volume-menu-button:focus .vjs-volume-bar:after {
+  visibility: visible;
 }
 
 .vjs-volume-bar.vjs-slider-horizontal {
@@ -118,6 +138,9 @@
 .vjs-volume-menu-button-vertical .vjs-lock-showing .vjs-menu-content {
   height: 8em;
   width: 2.9em;
+
+  //To allow the volume display to be seen properly --- a.video.player
+  overflow: visible;
 }
 
 .vjs-volume-menu-button-horizontal:hover .vjs-menu-content,
@@ -126,6 +149,9 @@
 .vjs-volume-menu-button-horizontal .vjs-lock-showing .vjs-menu-content {
   height: 2.9em;
   width: 8em;
+
+  //To allow the volume display to be seen properly --- a.video.player
+  overflow: visible;
 }
 
 .vjs-volume-menu-button.vjs-menu-button-inline .vjs-menu-content {

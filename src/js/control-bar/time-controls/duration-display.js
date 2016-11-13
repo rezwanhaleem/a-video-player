@@ -18,6 +18,8 @@ class DurationDisplay extends Component {
   constructor(player, options){
     super(player, options);
 
+    //Fixes the problem of duration time not loading  ---  a.video.player
+    this.on(player, 'timeupdate', this.updateContent);
     this.on(player, 'durationchange', this.updateContent);
   }
 

@@ -2,11 +2,11 @@
   @include flex(none);
   font-size: 1em;
   line-height: 3em;
-  //Commented out width and padding properties to remove excess spaces between time displays  ---  a.video.player
-  /*min-width: 2em;
+  //Commented out and modified width and padding properties to remove excess spaces between time displays  ---  a.video.player
+  //min-width: 2em;
   width: auto;
   padding-left: 1em;
-  padding-right: 1em;*/
+  //padding-right: 1em;
 }
 
 .vjs-live .vjs-time-control {
@@ -35,6 +35,7 @@
   @include transition(all 0.2s);
   width: 0;
   opacity: 0;
+  padding: 0
 }
 
 //Show remaining time display upon hover on itself or any of the time display elements  ---  a.video.player
