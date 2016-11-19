@@ -17,14 +17,16 @@
 
     @extend %icon-default;
   }
+
+  //Darkened and fixed the size of the glow behind certain elements(helps create better contrast, specially when the video image is white)  ---  a.video.player
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
 }
 
 // Replacement for focus outline
 .video-js .vjs-control:focus:before,
-.video-js .vjs-control:hover:before,
-.video-js .vjs-control:focus {
+.video-js .vjs-control:hover:before {
   //Darkened and fixed the size of the glow behind certain elements(helps create better contrast, specially when the video image is white)  ---  a.video.player
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+  //text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
 }
 
 // Hide control text visually, but have it available for screenreaders

@@ -1,6 +1,10 @@
 .video-js .vjs-fullscreen-control {
   cursor: pointer;
   @include flex(none);
+
+  //Position fullscreen button at top right corner  ---  a.video.player
+  width: 3em;
+  float: right;
 }
 .video-js .vjs-fullscreen-control {
   @extend .vjs-icon-fullscreen-enter;

@@ -1,0 +1,93 @@
+.video-js .vjs-view-bar {
+  display: none;
+  width: auto;
+  position: absolute;
+  //top assigned for the view bar to be in top right corner --- avideo
+  top: 0;
+  right: 0;
+  //left removed --- avideo
+  height: 3.0em;
+
+}
+
+// Video has started playing
+.vjs-has-started .vjs-view-bar {
+  display: inline-block;
+  visibility: visible;
+  opacity: 1;
+
+  $trans: visibility 0.1s, opacity 0.1s; // Var needed because of comma
+  @include transition($trans);
+}
+
+// IE 8 hack for media queries
+$ie8screen: "\\0screen";
+
+// Video has started playing AND user is inactive
+.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-view-bar {
+  // Remain visible for screen reader and keyboard users
+  visibility: visible;
+  opacity: 0;
+
+  $trans: visibility 1.0s, opacity 1.0s;
+  @include transition($trans);
+
+  // Make controls hidden in IE8 for now
+  @media #{$ie8screen} {
+    visibility: hidden;
+  }
+}
+
+.vjs-controls-disabled .vjs-view-bar,
+.vjs-using-native-controls .vjs-view-bar,
+.vjs-error .vjs-view-bar {
+  // !important is ok in this context.
+  display: none !important;
+}
+
+// Don't hide the view bar if it's audio
+.vjs-audio.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-view-bar {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+// IE8 is flakey with fonts, and you have to change the actual content to force
+// fonts to show/hide properly.
+// - "\9" IE8 hack didn't work for this
+// Found in XP IE8 from http://modern.ie. Does not show up in "IE8 mode" in IE9
+.vjs-user-inactive.vjs-playing .vjs-view-bar :before {
+  @media #{$ie8screen} { content: ""; }
+}
+
+// IE 8 + 9 Support
+.vjs-has-started.vjs-no-flex .vjs-view-bar {
+  display: table;
+}
+
+
+.video-js .vjs-view-bar > .vjs-expand-control,
+.video-js .vjs-view-bar > .vjs-theater-control {
+  -webkit-transition: width 0.4s ease 1s, opacity 0.4s ease 1s;
+  -moz-transition: width 0.4s ease 1s, opacity 0.4s ease 1s;
+  -ms-transition: width 0.4s ease 1s, opacity 0.4s ease 1s; /* IE10 is actually unprefixed */
+  -o-transition: width 0.4s ease 1s, opacity 0.4s ease 1s;
+  transition: width 0.4s ease 1s, opacity 0.4s ease 1s;
+
+  opacity: 0;
+  width: 0em;
+}
+
+
+.video-js .vjs-view-bar:hover > .vjs-expand-control,
+.video-js .vjs-view-bar:hover > .vjs-theater-control {
+  -webkit-transition: width 0.4s ease 0s, opacity 0.4s ease 0s;
+  -moz-transition: width 0.4s ease 0s, opacity 0.4s ease 0s;
+  -ms-transition: width 0.4s ease 0s, opacity 0.4s ease 0s; /* IE10 is actually unprefixed */
+  -o-transition: width 0.4s ease 0s, opacity 0.4s ease 0s;
+  transition: width 0.4s ease 0s, opacity 0.4s ease 0s;
+
+  opacity: 1;
+  width: 3em;
+}
+

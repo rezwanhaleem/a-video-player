@@ -2,7 +2,8 @@
 @import "private-variables";
 @import "utilities";
 
-@import "node_modules/videojs-font/scss/icons";
+//Changed the font scss directory to video.js font repo directory (for font changes to be implemented  ---  a.video.player
+@import "../font/scss/icons";
 
 @import "components/layout";
 @import "components/big-play";
@@ -41,3 +42,12 @@
 @import "components/modal-dialog";
 
 @import "print";
+
+//view-bar reference added --- a.video.player
+@import "components/view-bar";
+
+//Added css for expand button --- a.video.player
+@import "components/expand";
+
+//Added css for theater view button --- a.video.player
+@import "components/theater";

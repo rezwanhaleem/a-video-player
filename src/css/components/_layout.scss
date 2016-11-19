@@ -40,10 +40,24 @@
 }
 
 //Div containing the video player  --- a.video.player
-#a-video-player {
-    width: 40.337%;
-    min-width: 640px;
-    min-height: 360px;
+.a-video-container {
+  width: 40.337%;
+  margin: 0;
+  min-width: 640px;
+  min-height: 360px;
+}
+
+//CSS for background div during theater view  ---  a.video.player
+.vjs-theater-background {
+  width: 100%;
+  background-color: black;
+}
+
+//CSS for container div during theater view  ---  a.video.player
+.vjs-theater-container {
+  margin: 0 auto;
+  min-width: 854px;
+  min-height: 480px;
 }
 
 // All elements inherit border-box sizing

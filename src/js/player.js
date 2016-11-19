@@ -31,6 +31,8 @@ import PosterImage from './poster-image.js';
 import TextTrackDisplay from './tracks/text-track-display.js';
 import LoadingSpinner from './loading-spinner.js';
 import BigPlayButton from './big-play-button.js';
+//ViewBar reference added --- a.video.player
+import ViewBar from './view-bar/view-bar.js';
 import ControlBar from './control-bar/control-bar.js';
 import ErrorDisplay from './error-display.js';
 import TextTrackSettings from './tracks/text-track-settings.js';
@@ -2874,6 +2876,8 @@ Player.prototype.options_ = {
     'textTrackDisplay',
     'loadingSpinner',
     'bigPlayButton',
+    //viewBar child added --- a.video.player
+    'viewBar',
     'controlBar',
     'errorDisplay',
     'textTrackSettings'

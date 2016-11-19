@@ -11,7 +11,7 @@ import TimeDivider from './time-controls/time-divider.js';
 import RemainingTimeDisplay from './time-controls/remaining-time-display.js';
 import LiveDisplay from './live-display.js';
 import ProgressControl from './progress-control/progress-control.js';
-import FullscreenToggle from './fullscreen-toggle.js';
+//import FullscreenToggle from './fullscreen-toggle.js'; //Import commented out as fullscreen toggle was places in view bar instead  ---  a.video.player
 import VolumeControl from './volume-control/volume-control.js';
 import VolumeMenuButton from './volume-menu-button.js';
 import MuteToggle from './mute-toggle.js';
@@ -65,7 +65,7 @@ ControlBar.prototype.options_ = {
     'subtitlesButton',
     'captionsButton',
     'audioTrackButton',
-    'fullscreenToggle'
+    //'fullscreenToggle'   //Displaced(purposely) into view bar instead  ---  a.video.player
   ]
 };
 

@@ -1,0 +1,15 @@
+.video-js .vjs-theater-control {
+  cursor: pointer;
+  @include flex(none);
+
+  //Position theater button at top right corner  ---  avideo
+  width: 3em;
+  float: right;
+}
+.video-js .vjs-theater-control {
+  @extend .vjs-icon-theater;
+}
+// Switch to the exit icon when the player is in theatered view
+.video-js.vjs-theater-mode .vjs-theater-control {
+  @extend .vjs-icon-normal;
+}
