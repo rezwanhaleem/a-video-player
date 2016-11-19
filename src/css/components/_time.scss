@@ -20,6 +20,12 @@
   //display: none;
 }
 
+//Remove odd white outline seen in firefox (linux)  ---  a.video.player
+.video-js .vjs-current-time-display,
+.vjs-no-flex .vjs-current-time-display {
+  outline: none;
+}
+
 .video-js .vjs-duration,
 .vjs-no-flex .vjs-duration {
   //display: none;
@@ -38,9 +44,11 @@
   padding: 0
 }
 
-//Show remaining time display upon hover on itself or any of the time display elements  ---  a.video.player
+//Show remaining time display upon hover/focus on itself or any of the time display elements  ---  a.video.player
 .video-js .vjs-time-control:hover ~ .vjs-remaining-time,
-.video-js .vjs-remaining-time:hover {
+.video-js .vjs-time-control:focus ~ .vjs-remaining-time,
+.video-js .vjs-remaining-time:hover,
+.video-js .vjs-remaining-time:focus {
   width: 4em;
   opacity: 1;
 }
