@@ -29,11 +29,15 @@ class FastForwardButton extends Button {
   handleMouseDown() {
 	this.mouseDown_ = true;
 	this.fastClick_ = true;
+	if(!this.hasClass('vjs-fast-forward-toggle'))
+	  this.player_.pause();
 	//var that is used within anonymous functions
 	var that = this;
 	setTimeout(function() {
 	  that.startTime_ = window.performance.now();
 	  //RAF called to animate and illustrate the moving forward past the zoomed progress bar
+	  if(that.mouseDown_ && that.hasClass('vjs-fast-forward-toggle'))
+	    that.player_.pause();
       that.interval_ = setInterval(function() {
 	    that.fastForwardHold();
       },200);

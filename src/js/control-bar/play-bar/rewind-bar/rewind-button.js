@@ -29,10 +29,14 @@ class RewindButton extends Button {
   handleMouseDown() {
 	this.mouseDown_ = true;
 	this.fastClick_ = true;
+	if(!this.hasClass('vjs-rewind-toggle'))
+      this.player_.pause();
 	//var that is used within anonymous functions
 	var that = this;
 	setTimeout(function() {
 	  that.startTime_ = window.performance.now();
+	  if(that.mouseDown_ && that.hasClass('vjs-rewind-toggle'))
+	    that.player_.pause();
 	  //RAF called to animate and illustrate the moving forward past the zoomed progress bar
       that.interval_ = setInterval(function() {
 	    that.rewindHold();
