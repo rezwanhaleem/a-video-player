@@ -46,8 +46,60 @@
 //view-bar reference added --- a.video.player
 @import "components/view-bar";
 
-//Added css for expand button --- a.video.player
-@import "components/expand";
+//Added css for lightbox button --- a.video.player
+@import "components/light-box-control";
 
 //Added css for theater view button --- a.video.player
 @import "components/theater";
+
+//Added css for settings bar --- a.video.player
+@import "components/settings-bar";
+
+//Added css for theater settings button --- a.video.player
+@import "components/settings-toggle";
+
+//Added css for play bar --- a.video.player
+@import "components/play-bar";
+
+//Added css for rewind bar --- a.video.player
+@import "components/rewind-bar";
+
+//Added css for rewind button --- a.video.player
+@import "components/rewind-toggle";
+
+//Added css for fast forward bar --- a.video.player
+@import "components/fast-forward-bar";
+
+//Added css for fast forward button --- a.video.player
+@import "components/fast-forward-toggle";
+
+//Added css for top bar --- a.video.player
+@import "components/top-bar";
+
+//Added css for exit ight box button --- a.video.player
+@import "components/exit-light-box";
+
+//Added css for fast forward 30 button --- a.video.player
+@import "components/fast-forward-30";
+
+//Added css for fast forward 10 button --- a.video.player
+@import "components/fast-forward-10";
+
+//Added css for fast forward 5 button --- a.video.player
+@import "components/fast-forward-5";
+
+//Added css for rewind 30 button --- a.video.player
+@import "components/rewind-30";
+
+//Added css for rewind 10 button --- a.video.player
+@import "components/rewind-10";
+
+//Added css for rewind 5 button --- a.video.player
+@import "components/rewind-5";
+
+//Added css for next frame button --- a.video.player
+@import "components/next-frame";
+
+//Added css for previous frame button --- a.video.player
+@import "components/previous-frame";
+

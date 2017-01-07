@@ -2,7 +2,7 @@
  * @file off-text-track-menu-item.js
  */
 import TextTrackMenuItem from './text-track-menu-item.js';
-import Component from '../../component.js';
+import Component from '../../../component.js';
 
 /**
  * A special menu item for turning of a specific type of text track

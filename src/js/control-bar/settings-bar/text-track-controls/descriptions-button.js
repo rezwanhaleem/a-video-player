@@ -2,8 +2,8 @@
  * @file descriptions-button.js
  */
 import TextTrackButton from './text-track-button.js';
-import Component from '../../component.js';
-import * as Fn from '../../utils/fn.js';
+import Component from '../../../component.js';
+import * as Fn from '../../../utils/fn.js';
 
 /**
  * The button component for toggling and selecting descriptions

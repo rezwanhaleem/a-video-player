@@ -1,9 +1,9 @@
 /**
  * @file track-button.js
  */
-import MenuButton from '../menu/menu-button.js';
-import Component from '../component.js';
-import * as Fn from '../utils/fn.js';
+import MenuButton from '../../menu/menu-button.js';
+import Component from '../../component.js';
+import * as Fn from '../../utils/fn.js';
 
 /**
  * The base class for buttons that toggle specific text track types (e.g. subtitles)

@@ -9,11 +9,18 @@
 
   //Make Background of control bar transparent	---	a.video.player
   //@include background-color-with-alpha($primary-background-color, $primary-background-transparency);
+  //  ---  a.video.player
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 // Video has started playing
 .vjs-has-started .vjs-control-bar {
-  @include display-flex;
+  //@include display-flex;
+  //Display changed to inline-block for floating functionaility  ---  a.video.player
+  display: inline-block;
+  //Text aligned for play bar to be centered  ---  a.video.player
+  text-align: center;
   visibility: visible;
   opacity: 1;
 

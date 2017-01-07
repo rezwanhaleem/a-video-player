@@ -2,7 +2,7 @@
  * @file caption-settings-menu-item.js
  */
 import TextTrackMenuItem from './text-track-menu-item.js';
-import Component from '../../component.js';
+import Component from '../../../component.js';
 
 /**
  * The menu item for caption track settings menu

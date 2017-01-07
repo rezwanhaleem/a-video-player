@@ -2,7 +2,7 @@
  * @file subtitles-button.js
  */
 import TextTrackButton from './text-track-button.js';
-import Component from '../../component.js';
+import Component from '../../../component.js';
 
 /**
  * The button component for toggling and selecting subtitles

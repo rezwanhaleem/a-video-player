@@ -14,3 +14,12 @@
 
   @include box-shadow(0 0 1em $primary-foreground-color);
 }
+
+//Give rounded edges to progress and volume bars  ---  a.video.player
+.video-js .vjs-progress-holder:not(.vjs-pullseeking),
+.video-js .vjs-progress-holder:not(.vjs-pullseeking) .vjs-load-progress,
+.video-js .vjs-progress-holder:not(.vjs-pullseeking) .vjs-play-progress,
+.video-js .vjs-volume-bar,
+.video-js .vjs-volume-level {
+  border-radius: 100px;
+}

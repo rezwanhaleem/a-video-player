@@ -98,8 +98,6 @@ class VolumeBar extends Slider {
     let volume = (this.player_.volume() * 100).toFixed(2);
     this.el_.setAttribute('aria-valuenow', volume);
     this.el_.setAttribute('aria-valuetext', volume + '%');
-    //Date for the volume display  ---  a.video.player
-    this.el_.setAttribute('aria-volume', Math.floor(volume) + '%');
   }
 
 }

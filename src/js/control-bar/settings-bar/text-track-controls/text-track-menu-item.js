@@ -1,9 +1,9 @@
 /**
  * @file text-track-menu-item.js
  */
-import MenuItem from '../../menu/menu-item.js';
-import Component from '../../component.js';
-import * as Fn from '../../utils/fn.js';
+import MenuItem from '../../../menu/menu-item.js';
+import Component from '../../../component.js';
+import * as Fn from '../../../utils/fn.js';
 import window from 'global/window';
 import document from 'global/document';
 

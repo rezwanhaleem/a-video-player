@@ -13,13 +13,21 @@
 
   &:before {
     font-size: 1.8em;
-    line-height: 1.67;
+    line-height: 1.67em;
 
     @extend %icon-default;
   }
 
   //Darkened and fixed the size of the glow behind certain elements(helps create better contrast, specially when the video image is white)  ---  a.video.player
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+  //Display changed to inline-block for floating functionaility  ---  a.video.player
+  display: inline-block;
+}
+
+//Aligning icons from plyr ---  a.video.player
+.video-js .vjs-plyr-control:before {
+  font-size: 1.3em;
+  line-height: 2.27em;
 }
 
 // Replacement for focus outline

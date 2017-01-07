@@ -2,13 +2,13 @@
  * @file chapters-button.js
  */
 import TextTrackButton from './text-track-button.js';
-import Component from '../../component.js';
+import Component from '../../../component.js';
 import TextTrackMenuItem from './text-track-menu-item.js';
 import ChaptersTrackMenuItem from './chapters-track-menu-item.js';
-import Menu from '../../menu/menu.js';
-import * as Dom from '../../utils/dom.js';
-import * as Fn from '../../utils/fn.js';
-import toTitleCase from '../../utils/to-title-case.js';
+import Menu from '../../../menu/menu.js';
+import * as Dom from '../../../utils/dom.js';
+import * as Fn from '../../../utils/fn.js';
+import toTitleCase from '../../../utils/to-title-case.js';
 import window from 'global/window';
 
 /**
@@ -100,7 +100,7 @@ class ChaptersButton extends TextTrackButton {
       menu.children_.unshift(title);
       Dom.insertElFirst(title, menu.contentEl());
     } else {
-        // We will empty out the menu children each time because we want a 
+        // We will empty out the menu children each time because we want a
         // fresh new menu child list each time
         items.forEach(item => menu.removeChild(item));
         // Empty out the ChaptersButton menu items because we no longer need them

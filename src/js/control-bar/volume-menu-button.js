@@ -7,6 +7,8 @@ import Popup from '../popup/popup.js';
 import PopupButton from '../popup/popup-button.js';
 import MuteToggle from './mute-toggle.js';
 import VolumeBar from './volume-control/volume-bar.js';
+//Added reference for volume display  ---  a.video.player
+import VolumeDisplay from './volume-control/volume-display.js';
 
 /**
  * Button for volume popup
@@ -88,8 +90,8 @@ class VolumeMenuButton extends PopupButton {
     } else {
       orientationClass = 'vjs-volume-menu-button-horizontal';
     }
-
-    return `vjs-volume-menu-button ${super.buildCSSClass()} ${orientationClass}`;
+    //  ---  a.video.player
+    return `vjs-volume-menu-button ${super.buildCSSClass()} ${orientationClass} vjs-plyr-control`;
   }
 
   /**
@@ -105,10 +107,17 @@ class VolumeMenuButton extends PopupButton {
 
     let vb = new VolumeBar(this.player_, this.options_.volumeBar);
 
+    //  ---  a.video.player
+    let vd = new VolumeDisplay(this.player_, this.options_.volumeBar);
+
     popup.addChild(vb);
+    //  ---  a.video.player
+    popup.addChild(vd);
 
     this.menuContent = popup;
     this.volumeBar = vb;
+    //  ---  a.video.player
+    this.volumeDisplay = vd;
 
     this.attachVolumeBarEvents();
 

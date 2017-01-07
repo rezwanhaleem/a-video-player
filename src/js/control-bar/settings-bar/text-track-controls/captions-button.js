@@ -2,7 +2,7 @@
  * @file captions-button.js
  */
 import TextTrackButton from './text-track-button.js';
-import Component from '../../component.js';
+import Component from '../../../component.js';
 import CaptionSettingsMenuItem from './caption-settings-menu-item.js';
 
 /**

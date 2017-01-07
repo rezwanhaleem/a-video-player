@@ -2,8 +2,8 @@
  * @file audio-track-button.js
  */
 import TrackButton from '../track-button.js';
-import Component from '../../component.js';
-import * as Fn from '../../utils/fn.js';
+import Component from '../../../component.js';
+import * as Fn from '../../../utils/fn.js';
 import AudioTrackMenuItem from './audio-track-menu-item.js';
 
 /**

@@ -5,6 +5,8 @@ import Component from '../../component.js';
 
 // Required children
 import VolumeBar from './volume-bar.js';
+//Added reference for volume display  ---  a.video.player
+import VolumeDisplay from './volume-display.js';
 
 /**
  * The component for controlling the volume level
@@ -48,7 +50,9 @@ class VolumeControl extends Component {
 
 VolumeControl.prototype.options_ = {
   children: [
-    'volumeBar'
+    'volumeBar',
+    //Volume Display added as child  ---  a.video.player
+	'volumeDisplay'
   ]
 };
 

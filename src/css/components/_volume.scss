@@ -4,8 +4,19 @@
   @include flex(none);
   @extend .vjs-icon-volume-high;
 
-  //To allow the volume display to be seen properly --- a.video.player
-  overflow: visible;
+  //Float for left alignment  --- a.video.player
+  float: left;
+}
+
+.video-js .vjs-volume-menu-button:hover,
+.video-js .vjs-volume-menu-button:focus {
+  //Make space for volume display  ---  a.video.player
+  width: 14em;
+}
+
+//create gap to center volume icon  ---  a.video.player
+.video-js .vjs-volume-menu-button:before {
+  padding-left: 1em;
 }
 
 .video-js .vjs-mute-control.vjs-vol-0,
@@ -29,23 +40,31 @@
 
 .video-js .vjs-volume-bar {
   margin: 1.35em 0.45em;
-
-  //Volume display  ---  a.video.player
-  &:after {
-	position: relative;
-    top: -1.25em;
-    left: 4.75em;
-    font-size: 1em;
-    line-height: 3em;
-    width: auto;
-    content: attr(aria-volume);
-  }
+  //Float for left alignment  --- a.video.player
+  float: left;
 }
 
 // Also show the current volume tooltip --- a video
-.video-js .vjs-volume-menu-button:hover .vjs-volume-bar:after,
-.video-js .vjs-volume-menu-button:focus .vjs-volume-bar:after {
-  visibility: visible;
+.video-js .vjs-volume-display {
+  @include flex(none);
+  cursor: initial;
+  font-size: 1.1em;
+  line-height: 2.7em;
+  float: left;
+
+  @include transition(all 0.2s);
+  width: 0;
+  opacity: 0;
+  padding: 0;
+}
+
+//Show volume display upon hover/focus on itself or any of the volume elements  ---  a.video.player
+.video-js .vjs-volume-menu-button:hover .vjs-volume-display,
+.video-js .vjs-volume-menu-button:focus .vjs-volume-display,
+.video-js .vjs-volume-display:hover,
+.video-js .vjs-volume-display:focus {
+  width: 4em;
+  opacity: 1;
 }
 
 .vjs-volume-bar.vjs-slider-horizontal {
@@ -136,22 +155,18 @@
 .vjs-volume-menu-button-vertical:focus .vjs-menu-content,
 .vjs-volume-menu-button-vertical.vjs-slider-active .vjs-menu-content,
 .vjs-volume-menu-button-vertical .vjs-lock-showing .vjs-menu-content {
-  height: 8em;
+  //Make space for volume display   ---  a.video.player
+  height: 11em;
   width: 2.9em;
-
-  //To allow the volume display to be seen properly --- a.video.player
-  overflow: visible;
 }
 
 .vjs-volume-menu-button-horizontal:hover .vjs-menu-content,
 .vjs-volume-menu-button-horizontal:focus .vjs-menu-content,
 .vjs-volume-menu-button-horizontal .vjs-slider-active .vjs-menu-content,
 .vjs-volume-menu-button-horizontal .vjs-lock-showing .vjs-menu-content {
+  //Make space for volume display   ---  a.video.player
   height: 2.9em;
-  width: 8em;
-
-  //To allow the volume display to be seen properly --- a.video.player
-  overflow: visible;
+  width: 11em;
 }
 
 .vjs-volume-menu-button.vjs-menu-button-inline .vjs-menu-content {

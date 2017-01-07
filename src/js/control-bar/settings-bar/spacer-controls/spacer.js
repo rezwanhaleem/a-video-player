@@ -1,7 +1,7 @@
 /**
  * @file spacer.js
  */
-import Component from '../../component.js';
+import Component from '../../../component.js';
 
 /**
  * Just an empty spacer element that can be used as an append point for plugins, etc.
