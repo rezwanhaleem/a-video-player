@@ -1,8 +1,8 @@
 /**
  * @file fullscreen-toggle.js
  */
-import Button from '../button.js';
-import Component from '../component.js';
+import Button from '../../button.js';
+import Component from '../../component.js';
 
 /**
  * Toggle fullscreen video
@@ -37,7 +37,7 @@ class FullscreenToggle extends Button {
     } else {
       this.controlText('Fullscreen');
     }
-  }  
+  }
   /**
    * Handles click for full screen
    *
@@ -45,6 +45,11 @@ class FullscreenToggle extends Button {
    */
   handleClick() {
     if (!this.player_.isFullscreen()) {
+      //Close other view modes  ---  a.video.player
+	  if (this.player_.isTheaterMode())
+        this.player_.exitTheaterMode();
+	  if (this.player_.isLightBox())
+        this.player_.parentPlayer_.exitLightBox(this.player_.currentTime(),'fullscreen');
       this.player_.requestFullscreen();
     } else {
       this.player_.exitFullscreen();

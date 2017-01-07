@@ -1,0 +1,15 @@
+.video-js .vjs-exit-light-box {
+  cursor: pointer;
+  @include flex(none);
+
+  float: right;
+  width: 3em;
+
+  &:before {
+    font-size: 1em;
+    line-height: 2.97em;
+  }
+}
+.video-js .vjs-exit-light-box {
+  @extend .vjs-icon-close;
+}

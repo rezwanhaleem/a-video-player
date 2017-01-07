@@ -49,7 +49,7 @@ class Html5 extends Tech {
       let nodes = this.el_.childNodes;
       let nodesLength = nodes.length;
       let removeNodes = [];
-
+      this.htmlTrackEls_ = []; //Track elements saved here for lighbox generation  ---  a.video.player
       while (nodesLength--) {
         let node = nodes[nodesLength];
         let nodeName = node.nodeName.toLowerCase();
@@ -76,6 +76,7 @@ class Html5 extends Tech {
 
       for (let i=0; i<removeNodes.length; i++) {
         this.el_.removeChild(removeNodes[i]);
+        this.htmlTrackEls_.push(removeNodes[i]); //  ---  a.video.player
       }
     }
 
@@ -102,7 +103,7 @@ class Html5 extends Tech {
 
     if (this.featuresNativeTextTracks) {
       if (crossoriginTracks) {
-        log.warn(tsml`Text Tracks are being loaded from another origin but the crossorigin attribute isn't used. 
+        log.warn(tsml`Text Tracks are being loaded from another origin but the crossorigin attribute isn't used.
             This may prevent text tracks from loading.`);
       }
 
@@ -140,7 +141,7 @@ class Html5 extends Tech {
         tl.removeEventListener('addtrack', this[`handle${capitalType}TrackAdd_`]);
         tl.removeEventListener('removetrack', this[`handle${capitalType}TrackRemove_`]);
       }
-      
+
       // Stop removing old text tracks
       if (tl) {
         this.off('loadstart', this[`removeOld${capitalType}Tracks_`]);
@@ -305,7 +306,7 @@ class Html5 extends Tech {
         tt.addEventListener('addtrack', this.handleTextTrackAdd_);
         tt.addEventListener('removetrack', this.handleTextTrackRemove_);
       }
-    
+
       // Remove (native) texttracks that are not used anymore
       this.on('loadstart', this.removeOldTextTracks_);
     }

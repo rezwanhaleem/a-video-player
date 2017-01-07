@@ -1,0 +1,7 @@
+.video-js .vjs-rewind-5 {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-rewind-5 {
+  @extend .vjs-icon-rewind-5;
+}

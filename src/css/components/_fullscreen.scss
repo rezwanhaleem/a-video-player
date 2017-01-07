@@ -2,9 +2,8 @@
   cursor: pointer;
   @include flex(none);
 
-  //Position fullscreen button at top right corner  ---  a.video.player
+  //Reduced size from 4em to 3em for aesthetic purposes  ---  a.video.player
   width: 3em;
-  float: right;
 }
 .video-js .vjs-fullscreen-control {
   @extend .vjs-icon-fullscreen-enter;

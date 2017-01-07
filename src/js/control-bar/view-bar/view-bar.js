@@ -1,10 +1,10 @@
 /**
  * @file view-bar.js  ---  a.video.player
  */
-import Component from '../component.js';
+import Component from '../../component.js';
 
 // Required children
-import ExpandToggle from './expand-toggle.js';
+import LightBoxToggle from './light-box-toggle.js';
 import FullscreenToggle from './fullscreen-toggle.js';
 import TheaterToggle from './theater-toggle.js';
 
@@ -38,7 +38,7 @@ ViewBar.prototype.options_ = {
   children: [
     'fullscreenToggle',
     'theaterToggle',
-    'expandToggle'
+    'lightBoxToggle'
   ]
 };
 

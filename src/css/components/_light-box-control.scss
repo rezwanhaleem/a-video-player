@@ -1,0 +1,11 @@
+.video-js .vjs-light-box-control {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-light-box-control {
+  @extend .vjs-icon-light-box;
+}
+// Switch to the exit icon when the player is in light-box view
+.video-js.vjs-light-boxed .vjs-light-box-control {
+  @extend .vjs-icon-contract;
+}

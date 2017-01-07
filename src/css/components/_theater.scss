@@ -1,10 +1,6 @@
 .video-js .vjs-theater-control {
   cursor: pointer;
   @include flex(none);
-
-  //Position theater button at top right corner  ---  avideo
-  width: 3em;
-  float: right;
 }
 .video-js .vjs-theater-control {
   @extend .vjs-icon-theater;

@@ -1,0 +1,7 @@
+.video-js .vjs-fast-forward-toggle {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-fast-forward-toggle {
+  @extend .vjs-icon-fast-forward;
+}

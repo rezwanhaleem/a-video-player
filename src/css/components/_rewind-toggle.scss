@@ -1,0 +1,7 @@
+.video-js .vjs-rewind-toggle {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-rewind-toggle {
+  @extend .vjs-icon-rewind;
+}

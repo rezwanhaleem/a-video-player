@@ -1,0 +1,7 @@
+.video-js .vjs-settings-toggle {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-settings-toggle {
+  @extend .vjs-icon-cog;
+}

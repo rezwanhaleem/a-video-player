@@ -1,0 +1,7 @@
+.video-js .vjs-fast-forward-10 {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-fast-forward-10 {
+  @extend .vjs-icon-fast-forward-10;
+}

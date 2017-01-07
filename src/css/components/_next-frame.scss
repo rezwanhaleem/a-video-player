@@ -1,0 +1,7 @@
+.video-js .vjs-next-frame {
+  cursor: pointer;
+  @include flex(none);
+}
+.video-js .vjs-next-frame {
+  @extend .vjs-icon-next-frame;
+}

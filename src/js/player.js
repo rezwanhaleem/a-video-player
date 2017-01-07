@@ -31,8 +31,6 @@ import PosterImage from './poster-image.js';
 import TextTrackDisplay from './tracks/text-track-display.js';
 import LoadingSpinner from './loading-spinner.js';
 import BigPlayButton from './big-play-button.js';
-//ViewBar reference added --- a.video.player
-import ViewBar from './view-bar/view-bar.js';
 import ControlBar from './control-bar/control-bar.js';
 import ErrorDisplay from './error-display.js';
 import TextTrackSettings from './tracks/text-track-settings.js';
@@ -41,6 +39,10 @@ import ModalDialog from './modal-dialog';
 // Require html5 tech, at least for disposing the original video tag
 import Tech from './tech/tech.js';
 import Html5 from './tech/html5.js';
+
+//Lightbox and topbar imported  ---  a.video.player
+import LightBox from './light-box/light-box.js';
+import TopBar from './top-bar/top-bar.js';
 
 /**
  * An instance of the `Player` class is created when any of the Video.js setup methods are used to initialize a video.
@@ -1633,6 +1635,50 @@ class Player extends Component {
   }
 
   /**
+   * Check if the player is in theater mode  ---  a.video.player
+   * ```js
+   *     // get
+   *     var theaterModeOrNot = myPlayer.isTheaterMode();
+   *     // set
+   *     myPlayer.isTheaterMode(true); // tell the player it's in theater mode
+   * ```
+   *
+   * @param  {Boolean=} isTM Update the player's theater mode state
+   * @return {Boolean} true if in theater mode false if not when getting
+   * @return {Player} self when setting
+   * @method isTheaterMode
+   */
+   isTheaterMode(isTM) {
+     if (isTM !== undefined) {
+       this.isTheaterMode_ = !!isTM;
+       return this;
+     }
+     return !!this.isTheaterMode_;
+   }
+
+   /**
+    * Check if the player is in a lightbox  ---  a.video.player
+    * ```js
+    *     // get
+    *     var lightBoxOrNot = myPlayer.isLightBox();
+    *     // set
+    *     myPlayer.isLightBox(true); // tell the player it's in a lightbox
+    * ```
+    *
+    * @param  {Boolean=} isLB Update the player's lightbox state
+    * @return {Boolean} true if in a lightbox false if not when getting
+    * @return {Player} self when setting
+    * @method isLightBox
+    */
+    isLightBox(isLB) {
+      if (isLB !== undefined) {
+        this.isLightBox_ = !!isLB;
+        return this;
+      }
+      return !!this.isLightBox_;
+    }
+
+  /**
    * Increase the size of the video to full screen
    * ```js
    *     myPlayer.requestFullscreen();
@@ -1689,6 +1735,65 @@ class Player extends Component {
   }
 
   /**
+   * Increase the size of the video to theater mode  ---  a.video.player
+   * ```js
+   *     myPlayer.requestTheaterMode();
+   * ```
+   * @return {Player} self
+   * @method requestTheaterMode
+   */
+  requestTheaterMode() {
+    Dom.addElClass(this.el_.parentNode.parentNode, 'vjs-theater-background');
+    this.el_.parentNode.style.width = '67.6899%';
+    Dom.addElClass(this.el_.parentNode, 'vjs-theater-container');
+    Dom.addElClass(this.el_,'vjs-theater-mode');
+
+    this.isTheaterMode(true);
+
+    this.trigger('theatermodechange');
+
+    return this;
+  }
+
+  /**
+   * Increase the size of the video to light box  ---  a.video.player
+   * ```js
+   *     myPlayer.requestLightBox();
+   * ```
+   * @return {Player} self
+   * @method requestLightBox
+   */
+  requestLightBox(lightbox) {
+    this.lightbox_ = lightbox;
+
+    document.body.appendChild(this.lightbox_.el_);
+
+    this.arrangeLightBox();
+
+    if (this.paused()) {
+      this.video_.pause();
+    }
+    else {
+	  this.pause();
+    }
+
+    var that = this;
+    setTimeout(function(){
+  	  that.video_.hasStarted(true);
+    }, 50);
+    return this;
+  }
+
+   //default lightbox setup ---  a.video.player
+   arrangeLightBox(){
+     Dom.addElClass(this.el_,'vjs-light-boxed');
+
+     this.isLightBox(true);
+
+     this.trigger('lightboxchange');
+   }
+
+  /**
    * Return the video to its normal size after having been in full screen mode
    * ```js
    *     myPlayer.exitFullscreen();
@@ -1710,6 +1815,71 @@ class Player extends Component {
      this.exitFullWindow();
      this.trigger('fullscreenchange');
     }
+
+    return this;
+  }
+
+  /**
+   * Return the video to its normal size after having been in theater mode  ---  a.video.player
+   * ```js
+   *     myPlayer.exitTheaterMode();
+   * ```
+   *
+   * @return {Player} self
+   * @method exitTheaterMode
+   */
+  exitTheaterMode() {
+    Dom.removeElClass(this.el_.parentNode.parentNode, 'vjs-theater-background');
+    this.el_.parentNode.style.width = '40.337%';
+    Dom.removeElClass(this.el_.parentNode, 'vjs-theater-container');
+    Dom.removeElClass(this.el_,'vjs-theater-mode');
+
+	this.isTheaterMode(false);
+
+	this.trigger('theatermodechange');
+
+    return this;
+  }
+
+  /**
+   * Return the video to its normal size after having been in in a lightbox  ---  a.video.player
+   * ```js
+   *     myPlayer.exitLightBox();
+   * ```
+   *
+   * @return {Player} self
+   * @method exitLightBox
+   */
+  exitLightBox(newTime, from) {
+	let videoWasPaused =  this.video_.paused();
+
+	this.video_.dispose();
+
+	delete this.video_;
+
+	document.body.removeChild(this.lightbox_.el_);
+
+	this.currentTime(newTime);
+
+	Dom.removeElClass(this.el_,'vjs-light-boxed');
+
+	this.isLightBox(false);
+
+	this.trigger('lightboxchange');
+
+	if(from === 'fullscreen'){
+	  this.requestFullscreen();
+	}
+	else if(from === 'theatertoggle'){
+	  this.requestTheaterMode();
+	}
+
+	if (videoWasPaused) {
+	  this.pause();
+    }
+	else {
+	  this.play();
+	}
 
     return this;
   }
@@ -2876,8 +3046,8 @@ Player.prototype.options_ = {
     'textTrackDisplay',
     'loadingSpinner',
     'bigPlayButton',
-    //viewBar child added --- a.video.player
-    'viewBar',
+    //top bar reference added  ---  a.video.player
+    'topBar',
     'controlBar',
     'errorDisplay',
     'textTrackSettings'

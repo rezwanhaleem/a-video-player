@@ -1,0 +1,74 @@
+.video-js .vjs-top-bar {
+  display: none;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3.0em;
+
+  //Make Background of top bar transparent	---	a.video.player
+  //@include background-color-with-alpha($primary-background-color, $primary-background-transparency);
+  //  ---  a.video.player
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+// Video has started playing
+.vjs-has-started .vjs-top-bar {
+  //@include display-flex;
+  //Display changed to inline-block for floating functionaility  ---  a.video.player
+  display: inline-block;
+  //Text aligned for play bar to be centered  ---  a.video.player
+  text-align: center;
+  visibility: visible;
+  opacity: 1;
+
+  $trans: visibility 0.1s, opacity 0.1s; // Var needed because of comma
+  @include transition($trans);
+}
+
+// IE 8 hack for media queries
+$ie8screen: "\\0screen";
+
+// Video has started playing AND user is inactive
+.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-top-bar {
+  // Remain visible for screen reader and keyboard users
+  visibility: visible;
+  opacity: 0;
+
+  $trans: visibility 1.0s, opacity 1.0s;
+  @include transition($trans);
+
+  // Make controls hidden in IE8 for now
+  @media #{$ie8screen} {
+    visibility: hidden;
+  }
+}
+
+.vjs-controls-disabled .vjs-top-bar,
+.vjs-using-native-controls .vjs-top-bar,
+.vjs-error .vjs-top-bar {
+  // !important is ok in this context.
+  display: none !important;
+}
+
+// Don't hide the top bar if it's audio
+.vjs-audio.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-top-bar {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+// IE8 is flakey with fonts, and you have to change the actual content to force
+// fonts to show/hide properly.
+// - "\9" IE8 hack didn't work for this
+// Found in XP IE8 from http://modern.ie. Does not show up in "IE8 mode" in IE9
+.vjs-user-inactive.vjs-playing .vjs-top-bar :before {
+  @media #{$ie8screen} { content: ""; }
+}
+
+// IE 8 + 9 Support
+.vjs-has-started.vjs-no-flex .vjs-top-bar {
+  display: table;
+}
