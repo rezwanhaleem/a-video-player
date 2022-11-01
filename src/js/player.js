@@ -3047,7 +3047,7 @@ Player.prototype.options_ = {
     'loadingSpinner',
     'bigPlayButton',
     //top bar reference added  ---  a.video.player
-    // 'topBar',
+    'topBar',
     'controlBar',
     'errorDisplay',
     // 'textTrackSettings'

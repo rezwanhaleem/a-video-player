@@ -19,7 +19,9 @@
 .vjs-has-started .vjs-control-bar {
   //@include display-flex;
   //Display changed to inline-block for floating functionaility  ---  a.video.player
-  display: inline-block;
+  // display: inline-block;
+  display: flex;
+  flex-direction: column;
   //Text aligned for play bar to be centered  ---  a.video.player
   text-align: center;
   visibility: visible;

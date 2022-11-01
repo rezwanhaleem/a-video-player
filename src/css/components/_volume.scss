@@ -8,6 +8,10 @@
   float: left;
 }
 
+.video-js .vjs-volume-menu-button {
+  height: 3em;
+}
+
 .video-js .vjs-volume-menu-button:hover,
 .video-js .vjs-volume-menu-button:focus {
   //Make space for volume display  ---  a.video.player

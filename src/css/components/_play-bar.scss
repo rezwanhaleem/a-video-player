@@ -1,5 +1,5 @@
 .video-js .vjs-play-bar {
-  display: inline-block;
+  display: flex;
   width: auto;
   height: 3.0em;
   margin-left: -4em; //For center aligning --- a.video.player
@@ -7,7 +7,7 @@
 
 // Video has started playing
 .vjs-has-started .vjs-play-bar {
-  display: inline-block;
+  display: flex;
   visibility: visible;
   opacity: 1;
 

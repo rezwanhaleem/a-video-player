@@ -1,0 +1,9 @@
+.video-js .vjs-control-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.vjs-control-bottom > div {
+    height: 3em;
+}

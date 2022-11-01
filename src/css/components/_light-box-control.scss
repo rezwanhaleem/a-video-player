@@ -9,3 +9,10 @@
 .video-js.vjs-light-boxed .vjs-light-box-control {
   @extend .vjs-icon-contract;
 }
+
+#vid1_html5_api {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  aspect-ratio: 16 / 9;
+}
