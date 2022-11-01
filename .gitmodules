@@ -1,3 +1,4 @@
 [submodule "a-video-player-font"]
 	path = a-video-player-font
 	url = https://github.com/rezwanhaleem/a-video-player-font
+	branch = develop

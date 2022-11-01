@@ -41,13 +41,13 @@ SettingsBar.prototype.options_ = {
   loadEvent: 'play',
   children: [
 	'settingsToggle',
-	'customControlSpacer',
-    'playbackRateMenuButton',
-    'chaptersButton',
-    'descriptionsButton',
-    'subtitlesButton',
-    'captionsButton',
-    'audioTrackButton'
+	// 'customControlSpacer',
+  // 'playbackRateMenuButton',
+  'chaptersButton',
+  // 'descriptionsButton',
+  'subtitlesButton',
+  'captionsButton',
+  // 'audioTrackButton'
   ]
 };
 

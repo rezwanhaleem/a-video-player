@@ -3043,14 +3043,14 @@ Player.prototype.options_ = {
   children: [
     'mediaLoader',
     'posterImage',
-    'textTrackDisplay',
+    // 'textTrackDisplay',
     'loadingSpinner',
     'bigPlayButton',
     //top bar reference added  ---  a.video.player
-    'topBar',
+    // 'topBar',
     'controlBar',
     'errorDisplay',
-    'textTrackSettings'
+    // 'textTrackSettings'
   ],
 
   language: navigator.languages && navigator.languages[0] || navigator.userLanguage || navigator.language || 'en',

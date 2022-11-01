@@ -1,3 +1,7 @@
 .video-js .vjs-captions-button {
   @extend .vjs-icon-captions;
 }
+
+.video-js .vjs-captions-button {
+  display: flex !important;
+}
