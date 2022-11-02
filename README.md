@@ -6,7 +6,7 @@
 
 # Demo
 
-## [α video player](http://α-video-player.infinityfreeapp.com/) <- Demo hosted on [Infinity Free](https://www.infinityfree.net/)
+## [α video player](http://a-video-player.infinityfreeapp.com/) <- Demo hosted on [Infinity Free](https://www.infinityfree.net/)
 
 <br/>
 <img src="https://i.imgur.com/FVIkEuR.png" alt="drawing" style="width:700px;"/>
