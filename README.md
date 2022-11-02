@@ -33,19 +33,19 @@ Video Credits: Big Buck Bunny (code-named Project Peach) made by the Blender Ins
 
 `Set you volume level to the exact percentage`
 
-![Editable Time](https://media.giphy.com/media/blqZOW9exSxOnLX4dO/giphy-downsized-large.gif)
+![Precise Volume](https://media.giphy.com/media/KEA3IFgZtgCxatfr4v/giphy.gif)
 
 ## Powerful Playback Options
 
 `Rewind or Fast Forward over 10 seconds(variable) or frame by frame`
 
-![Editable Time](https://media.giphy.com/media/NPlGfmIXu00vm3fgLQ/giphy.gif)
+![Playback](https://media.giphy.com/media/NPlGfmIXu00vm3fgLQ/giphy.gif)
 
 ## Fluid Track and View Options
 
 `Captions, Subtitles and Chapters included along with a Light Box and Theather View`
 
-![Editable Time](https://media.giphy.com/media/GVHGsByyRSGNyi2aSv/giphy.gif)
+![Fluid View](https://media.giphy.com/media/GVHGsByyRSGNyi2aSv/giphy.gif)
 <br/>
 <br/>
 
