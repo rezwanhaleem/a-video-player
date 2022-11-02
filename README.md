@@ -6,6 +6,8 @@
 
 # Demo
 
+Enhanced distribution of the open source VideoJS player 
+
 ## [α video player](http://a-video-player.infinityfreeapp.com/) <- Demo hosted on [Infinity Free](https://www.infinityfree.net/)
 
 <br/>
