@@ -33,7 +33,7 @@ Video Credits: Big Buck Bunny (code-named Project Peach) made by the Blender Ins
 
 `Set you volume level to the exact percentage`
 
-![Precise Volume](https://media.giphy.com/media/KEA3IFgZtgCxatfr4v/giphy.gif)
+![Precise Volume](https://media.giphy.com/media/S8delCIkxIMrmWIfhW/giphy.gif)
 
 ## Powerful Playback Options
 
