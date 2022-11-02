@@ -4,9 +4,9 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/rezwanhaleem/a-video-player)
 ![GitHub issues](https://img.shields.io/github/issues/rezwanhaleem/a-video-player)
 
-# Demo
-
 Enhanced distribution of the open source VideoJS player 
+
+# Demo
 
 ## [α video player](http://a-video-player.infinityfreeapp.com/) <- Demo hosted on [Infinity Free](https://www.infinityfree.net/)
 
