@@ -35,7 +35,7 @@ Video Credits: Big Buck Bunny (code-named Project Peach) made by the Blender Ins
 
 `Seek time with more precision by moving vertical while holding the progress bar button`
 
-![Editable Time](https://media.giphy.com/media/e42WoKGysgjlWIcNcF/giphy.gif)
+![Editable Time](https://media.giphy.com/media/x42YQlKdwpAjmRSAv7/giphy.gif)
 
 ## Precise Volume
 
